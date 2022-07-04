@@ -2,7 +2,7 @@
 
 ### `yarn`
 
-Install the dependency.
+Install the dependency. Node expected version "^12.22.0 || ^14.17.0 || >=16.0.0", if you don't want change node version now, you can also use `yarn --ignore-engines` to install dependency with ignore the error.
 
 ### `yarn start`
 
