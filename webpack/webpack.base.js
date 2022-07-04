@@ -53,9 +53,19 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'], // 处理css
       },
       {
-        test: /\.less$/,
+        test: /\.(scss|sass)$/, // 处理scss
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'], // 处理less
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import "src/styles/index.scss";`,
+            },
+          },
+        ],
       },
     ],
   },
