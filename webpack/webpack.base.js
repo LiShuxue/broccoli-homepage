@@ -70,10 +70,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
-    // 末尾添加 $，以表示精准匹配
     alias: {
-      src$: path.resolve(__dirname, './src'),
-      components$: path.resolve(__dirname, './src/components'),
+      src: path.resolve(__dirname, '../src'),
+      components: path.resolve(__dirname, '../src/components'),
     },
   },
 };
