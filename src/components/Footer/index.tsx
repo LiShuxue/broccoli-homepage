@@ -2,7 +2,7 @@ import React from 'react';
 import { companyInfo } from 'src/config/ui-text';
 import './index.scss';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <i>{companyInfo.address}</i>
