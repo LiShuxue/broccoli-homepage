@@ -1,0 +1,11 @@
+.app{
+    color: grey;
+    font-family: Menlo, Monaco, sans-serif;
+
+    .content {
+        margin-top: $header-height;
+        margin-bottom: $footer-height;
+        height: calc(100vh - $header-height - $footer-height);
+        overflow: scroll;
+    }
+}
