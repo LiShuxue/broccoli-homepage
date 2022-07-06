@@ -9,7 +9,7 @@ interface IInputProps {
 
 // 使用memo来保证不必要的渲染
 const Input: React.FC<IInputProps> = React.memo((props) => {
-  const { placeholder = '', onChange, error = '' } = props;
+  const { placeholder = '', onChange, error = '', ...other } = props;
 
   const handleChange = (event: React.ChangeEvent) => {
     const { value } = event.target as HTMLInputElement;
@@ -18,7 +18,7 @@ const Input: React.FC<IInputProps> = React.memo((props) => {
 
   return (
     <div>
-      <input placeholder={placeholder} onChange={handleChange} />
+      <input placeholder={placeholder} onChange={handleChange} {...other} />
       {error ? <div className="error-msg">{error}</div> : null}
     </div>
   );

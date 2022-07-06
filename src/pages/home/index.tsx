@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { inviteText, formDialogText, successDialogText } from 'src/config/ui-text';
-import Modal from 'components/Model';
+import Modal from 'components/Modal';
 import Input from 'components/Input';
 import { submitFormInfo } from 'src/api';
 import './index.scss';
