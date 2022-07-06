@@ -50,22 +50,34 @@
         .modal-footer {
             width: 100%;
             display: flex;
-            .btn {
-                height: 18px;
-                padding: 10px;
-                text-align: center;
-                line-height: 18px;
-                border: 1px solid grey;
-                font-weight: 600;
-                margin: 40px 30px;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            .btn-wrapper {
                 width: 100%;
-                cursor: pointer;
+                display: flex;
+                .btn {
+                    height: 18px;
+                    padding: 10px;
+                    text-align: center;
+                    line-height: 18px;
+                    border: 1px solid grey;
+                    font-weight: 600;
+                    margin: 0 30px;
+                    width: 100%;
+                    cursor: pointer;
+                }
+    
+                .btn-disabled {
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                }
             }
-
-            .btn-disabled {
-                cursor: not-allowed;
-                opacity: 0.5;
+            .other {
+                color: #f05151;
+                margin-top: 15px;
             }
+            
         }
     }
 }

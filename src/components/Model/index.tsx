@@ -13,6 +13,7 @@ interface ImodalProps {
   onCancel?: () => void;
   cancelBtnText?: React.ReactNode;
   okBtnLoading?: boolean;
+  otherFooterInfo?: React.ReactNode;
 }
 
 // 使用memo来保证不必要的渲染
@@ -26,6 +27,7 @@ const Modal: React.FC<ImodalProps> = React.memo((props) => {
     onCancel = (e: React.MouseEvent<HTMLElement>) => {},
     cancelBtnText = '',
     okBtnLoading = false,
+    otherFooterInfo,
   } = props;
 
   const okBtnClassName = classnames('modal-confirm-btn btn', { 'btn-disabled': okBtnLoading });
@@ -64,16 +66,19 @@ const Modal: React.FC<ImodalProps> = React.memo((props) => {
 
         {/* 弹窗的按钮部分，没有cancel按钮或者OK按钮相关参数时按钮不展示 */}
         <div className="modal-footer">
-          {cancelBtnText ? (
-            <div className="modal-cancel-btn btn" onClick={clickCancel}>
-              {cancelBtnText}
-            </div>
-          ) : null}
-          {okBtnText ? (
-            <div className={okBtnClassName} onClick={clickOk}>
-              {okBtnText}
-            </div>
-          ) : null}
+          <div className="btn-wrapper">
+            {cancelBtnText ? (
+              <div className="modal-cancel-btn btn" onClick={clickCancel}>
+                {cancelBtnText}
+              </div>
+            ) : null}
+            {okBtnText ? (
+              <div className={okBtnClassName} onClick={clickOk}>
+                {okBtnText}
+              </div>
+            ) : null}
+          </div>
+          {otherFooterInfo ? <i className="other">{otherFooterInfo}</i> : null}
         </div>
       </div>
     </div>,

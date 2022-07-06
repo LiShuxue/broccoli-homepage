@@ -126,6 +126,7 @@ const Home: React.FC = () => {
         onOk={submit}
         onCancel={closeDialog}
         okBtnLoading={btnLoading}
+        otherFooterInfo={serverError}
       >
         {successMsg ? (
           <div>{successMsg}</div>
