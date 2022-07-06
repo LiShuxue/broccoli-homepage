@@ -7,11 +7,12 @@ Install the dependency. Node expected version "^12.22.0 || ^14.17.0 || >=16.0.0"
 ### `yarn start`
 
 Run the app in the development mode.\
-Open [http://localhost:3333](http://localhost:3333) to view it in the browser.
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 ### `yarn build`
 
-Builds the app for production to the `dist` folder.
+Builds the app for production to the `dist` folder.\
+I already deployed, you can click this link to view the project, [http://lishuxue.site:8081](http://lishuxue.site:8081).
 
 ### `yarn test`
 

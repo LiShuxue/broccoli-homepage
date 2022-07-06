@@ -7,7 +7,7 @@ const config = {
     type: 'memory', // 使用内存缓存
   },
   devServer: {
-    port: '3333',
+    port: '8081',
     open: true,
   },
 };

@@ -57,7 +57,7 @@ test('dialog input validation successed and call backend', async () => {
       expect(successMsg).toBeInTheDocument();
     },
     {
-      timeout: 3000,
+      timeout: 5000,
     }
   );
 });
