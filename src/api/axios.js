@@ -4,7 +4,7 @@ const instance = axios.create();
 instance.defaults.timeout = 20 * 1000;
 instance.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
 
-// need to config detail interceptor
+// 请求拦截
 instance.interceptors.request.use(
   (config) => {
     return config;
@@ -14,7 +14,7 @@ instance.interceptors.request.use(
   }
 );
 
-// need to config detail interceptor
+// 响应拦截
 instance.interceptors.response.use(
   (response) => {
     return response.data;

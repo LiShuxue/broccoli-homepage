@@ -62,7 +62,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: `@import "src/styles/index.scss";`,
+              additionalData: `@import "src/styles/variable.scss";`,
             },
           },
         ],

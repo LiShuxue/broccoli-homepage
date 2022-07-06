@@ -1,0 +1,44 @@
+@media only screen and (max-width: 767px) {
+    /* For Mobile: */
+    .home-msg1 {
+        font-size: 25px !important;
+    }
+    .home-msg2 {
+        font-size: 25px !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    /* For Mobile: */
+    .home-msg1 {
+        font-size: 16px !important;
+    }
+    .home-msg2 {
+        font-size: 16px !important;
+    }
+    .home-msg3 {
+        font-size: 12px !important;
+    }
+    .home-btn {
+        font-size: 12px !important;
+    }
+    .header {
+        font-size: 14px !important;
+    }
+    .footer {
+        font-size: 8px !important;
+    }
+    .modal .modal-content {
+        width: 300px !important;
+    }
+    .modal .btn-wrapper .btn {
+        padding: 5px !important;
+    }
+    input {
+        width: 230px !important;
+        height: 25px !important;
+    }
+    .error-msg {
+        font-size: 8px !important;
+    }
+}
