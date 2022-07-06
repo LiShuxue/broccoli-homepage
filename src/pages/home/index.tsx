@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { inviteText } from 'src/config/ui-text';
 import Modal from 'components/Model';
 import Input from 'components/Input';
+import { submitFormInfo } from 'src/api';
 import './index.scss';
 
 const Home: React.FC = () => {
@@ -15,6 +16,8 @@ const Home: React.FC = () => {
   const [emailError, setEmailError] = useState(''); // 邮件框校验错误信息
   const [emailConfirm, setEmailConfirm] = useState(''); // 邮件确认输入框
   const [emailConfirmError, setEmailConfirmError] = useState(''); // 邮件确认框的校验错误信息
+  const [successMsg, setSuccessMsg] = useState(''); // 注册成功的信息
+  const [serverError, setServerError] = useState(''); // 服务器错误信息
 
   const initFiled = () => {
     setDialogTitle('Request an invite');
@@ -26,6 +29,8 @@ const Home: React.FC = () => {
     setEmailError('');
     setEmailConfirm('');
     setEmailConfirmError('');
+    setSuccessMsg('');
+    setServerError('');
   };
 
   // 展示弹窗
@@ -34,22 +39,24 @@ const Home: React.FC = () => {
     setShow(true);
   };
 
-  // 关闭弹窗，使用useCallback避免子组件不必要的渲染
-  const closeDialog = useCallback(() => {
+  // 关闭弹窗
+  const closeDialog = () => {
     setShow(false);
-  }, []);
+  };
 
   // 表单校验
-  const validate = useCallback(() => {
+  const validate = () => {
     const emailReg = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/;
     let hasError = false;
+    // 名称不为空并且大于3个字符
     if (!name || name.length < 3) {
       hasError = true;
-      setNameError('Full name needs to be at least 3 characters long.');
+      setNameError('Full name at least 3 characters long.');
     } else {
       setNameError('');
     }
 
+    // 邮箱不为空并且格式正确
     if (!email || !emailReg.test(email)) {
       hasError = true;
       setEmailError('Email format is not correct.');
@@ -57,6 +64,7 @@ const Home: React.FC = () => {
       setEmailError('');
     }
 
+    // 验证邮箱不为空，并且格式正确，并且跟第一个输入保持一致
     if (!emailConfirm || !emailReg.test(emailConfirm)) {
       hasError = true;
       setEmailConfirmError('Email format is not correct.');
@@ -66,17 +74,41 @@ const Home: React.FC = () => {
     } else {
       setEmailConfirmError('');
     }
+
     return !hasError;
-  }, [name, email, emailConfirm]);
+  };
 
   // 提交表单
-  const submit = useCallback(() => {
-    const valid = validate();
-    if (valid) {
-      setBtnLoading(true);
-      setDialogBtnText('Sending, please wait...');
+  const submit = () => {
+    // 如果是提交成功的状态，则点击ok关闭
+    if (successMsg) {
+      closeDialog();
+    } else {
+      // 否则是表单状态，点击send则验证表单，提交给后台
+      const valid = validate();
+      if (valid) {
+        setBtnLoading(true);
+        setDialogBtnText('Sending, please wait...');
+        submitFormInfo({
+          name,
+          email,
+        })
+          .then(() => {
+            setDialogTitle('All done!');
+            setSuccessMsg('You will be one of the first to experience Broccoli & Co. when we launch.');
+            setDialogBtnText('OK');
+            setServerError('');
+          })
+          .catch((e) => {
+            setDialogBtnText('Send');
+            setServerError(e.errorMessage);
+          })
+          .finally(() => {
+            setBtnLoading(false);
+          });
+      }
     }
-  }, [validate]);
+  };
 
   return (
     <div className="home">
@@ -95,14 +127,20 @@ const Home: React.FC = () => {
         onCancel={closeDialog}
         okBtnLoading={btnLoading}
       >
-        <Input placeholder="Full name" onChange={(value) => setName(value)} error={nameError} />
-        <Input placeholder="Email" type="email" onChange={(value) => setEmail(value)} error={emailError} />
-        <Input
-          placeholder="Confirm email"
-          type="email"
-          onChange={(value) => setEmailConfirm(value)}
-          error={emailConfirmError}
-        />
+        {successMsg ? (
+          <div>{successMsg}</div>
+        ) : (
+          <div>
+            <Input placeholder="Full name" onChange={(value) => setName(value)} error={nameError} />
+            <Input placeholder="Email" type="email" onChange={(value) => setEmail(value)} error={emailError} />
+            <Input
+              placeholder="Confirm email"
+              type="email"
+              onChange={(value) => setEmailConfirm(value)}
+              error={emailConfirmError}
+            />
+          </div>
+        )}
       </Modal>
     </div>
   );

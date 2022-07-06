@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import './index.scss';
@@ -31,22 +31,16 @@ const Modal: React.FC<ImodalProps> = React.memo((props) => {
   const okBtnClassName = classnames('modal-confirm-btn btn', { 'btn-disabled': okBtnLoading });
 
   // 点击确认按钮，先判断是否在loading状态
-  const clickOk = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      if (okBtnLoading) return;
-      onOk(event);
-    },
-    [okBtnLoading, onOk]
-  );
+  const clickOk = (event: React.MouseEvent<HTMLElement>) => {
+    if (okBtnLoading) return;
+    onOk(event);
+  };
 
   // 点击取消按钮，先判断是否在loading状态
-  const clickCancel = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      if (okBtnLoading) return;
-      onCancel(event);
-    },
-    [okBtnLoading, onCancel]
-  );
+  const clickCancel = (event: React.MouseEvent<HTMLElement>) => {
+    if (okBtnLoading) return;
+    onCancel(event);
+  };
 
   if (!visible) {
     return null;

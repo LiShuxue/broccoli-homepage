@@ -22,7 +22,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 450px;
+        width: 400px;
         background-color: white;
         border: 1px solid grey;
         color: grey;
@@ -41,6 +41,11 @@
                 background-color: grey;
                 height: 1px;
             }
+        }
+        .modal-body{
+            padding: 0 30px;
+            text-align: center;
+            line-height: 1.5;
         }
         .modal-footer {
             width: 100%;

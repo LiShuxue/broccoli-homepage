@@ -7,6 +7,8 @@ interface IInputProps {
   onChange?: (value: string) => void;
   error?: string;
 }
+
+// 使用memo来保证不必要的渲染
 const Input: React.FC<IInputProps> = React.memo((props) => {
   const { type = 'text', placeholder = '', onChange, error = '' } = props;
 
