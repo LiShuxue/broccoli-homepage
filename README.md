@@ -2,7 +2,7 @@
   Broccoli-homepage
 </h1>
 
-<p align="left">
+<p align="center">
   <img src="https://img.shields.io/badge/node-16.14.0-brightgreen.svg">
   <img src="https://img.shields.io/badge/yarn-1.22.17-brightgreen.svg">
   <img src="https://img.shields.io/badge/react-18.2.0-yellow.svg">
