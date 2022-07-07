@@ -1,0 +1,44 @@
+.modal {
+    @include flex-row-center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+
+    .modal-mask {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: grey;
+        opacity: 0.5;
+    }
+
+    .modal-content {
+        @include flex-column-center;
+        width: 400px;
+        background-color: white;
+        border: 1px solid grey;
+        color: grey;
+        z-index: 10001;
+        .modal-header {
+            .modal-title {
+                @include flex-column-center;
+                margin: 40px 0;
+                font-weight: 600;
+            }
+            .title-bottom-line {
+                margin-top: 15px;
+                width: 40px;
+                background-color: grey;
+                height: 1px;
+            }
+        }
+        .modal-body{
+            padding: 0 30px;
+            text-align: center;
+            line-height: 1.5;
+        }
+    }
+}

@@ -1,9 +1,11 @@
+// header 和 footer 部分的公司信息描述
 export const companyInfo = {
   name: 'BROCCOLI & CO.',
   address: 'Made with ♥ in Melbourne.',
   copyright: '© 2016 Broccoli & Co. All rights reserved.',
 };
 
+// 主页部分的邀请信息
 export const inviteText = {
   line1: 'A better way',
   line2: 'to enjoy every day.',
@@ -11,7 +13,8 @@ export const inviteText = {
   btn: 'Request an invite',
 };
 
-export const formDialogText = {
+// 邀请弹窗的信息
+export const inviteDialogText = {
   title: 'Request an invite',
   btnText: 'Send',
   btnLoadingText: 'Sending, please wait...',
@@ -20,6 +23,7 @@ export const formDialogText = {
   notSameError: 'Confirm email is different with the email.',
 };
 
+// 成功弹窗的信息
 export const successDialogText = {
   title: 'All done!',
   btnText: 'OK',

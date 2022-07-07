@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Home from 'src/pages/Home';
-import { inviteText, formDialogText, successDialogText } from 'src/config/ui-text';
+import { inviteText, inviteDialogText, successDialogText } from 'src/config/ui-text';
 
 test('renders home info', () => {
   render(<Home />);
@@ -22,11 +22,11 @@ test('dialog input validation failed', async () => {
   const btn = screen.getByText(inviteText.btn);
   await user.click(btn);
 
-  const sendBtn = screen.getByText(formDialogText.btnText);
+  const sendBtn = screen.getByText(inviteDialogText.btnText);
   await user.click(sendBtn);
 
-  const nameError = screen.getByText(formDialogText.nameError);
-  const emailError = screen.getAllByText(formDialogText.emailError);
+  const nameError = screen.getByText(inviteDialogText.nameError);
+  const emailError = screen.getAllByText(inviteDialogText.emailError);
 
   expect(nameError).toBeInTheDocument();
   expect(emailError).toHaveLength(2);
@@ -47,7 +47,7 @@ test('dialog input validation successed and call backend', async () => {
   fireEvent.change(nameInput, { target: { value: '123' } });
   fireEvent.change(emailInput, { target: { value: '123@qq.com' } });
   fireEvent.change(emailConfirmInput, { target: { value: '123@qq.com' } });
-  const sendBtn = screen.getByText(formDialogText.btnText);
+  const sendBtn = screen.getByText(inviteDialogText.btnText);
   await user.click(sendBtn);
 
   await waitFor(

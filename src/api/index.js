@@ -1,6 +1,6 @@
 import axios from './axios';
 
-// 表单提交到后台
+// 表单信息提交到后台
 export const submitFormInfo = (params) => {
   return axios({
     method: 'post',

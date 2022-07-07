@@ -1,9 +1,6 @@
 .home {
+    @include flex-column-center;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     line-height: 1;
 
     span {
